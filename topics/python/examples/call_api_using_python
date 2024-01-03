@@ -1,0 +1,13 @@
+import requests
+import bs4
+
+try:
+  res1 = requests.get('https://api.adviceslip.com/advice')
+  soup = bs4.BeautifulSoup(res1.text, 'lxml')
+except:
+  print("Error")
+if '404 Not Found' in soup.text:
+  print('Page Not Found')
+
+else:
+  print(soup.text)
